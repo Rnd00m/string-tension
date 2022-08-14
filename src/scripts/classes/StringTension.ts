@@ -34,14 +34,4 @@ export class StringTension {
   getTensionInKg(): number {
     return this.getTension() / this.#newtonCoefficient;
   }
-
-  /**
-   * Get the mass per unit length
-   *
-   * @param weight (in kg)
-   * @param length (in meters)
-   */
-  massPerUnitLength(weight: number, length: number): number {
-    return weight / length;
-  }
 }
