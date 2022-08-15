@@ -6,23 +6,20 @@ import { Note, Scale } from "@tonaljs/tonal";
 
 const props = defineProps(["stringSettings"]);
 
-console.log(props.stringSettings);
+const selected = reactive({
+  note: props.stringSettings ? props.stringSettings.note : ref("E2"),
+  string: props.stringSettings ? props.stringSettings.string : null,
+});
 
-const selectedNote = props.stringSettings
-  ? props.stringSettings.note
-  : reactive(ref("E2"));
-const selectedString = props.stringSettings
-  ? props.stringSettings.string
-  : null;
 const range = Scale.rangeOf("C chromatic");
 const notes = range("C1", "C5"); // All notes between C1 and C5
 
-console.log(selectedString);
+console.log(selected.string);
 
 const selectedNoteTension = computed(() => {
   return new StringTension(
-    selectedString,
-    Note.freq(selectedNote.value),
+    selected.string,
+    Note.freq(selected.note),
     0.648
   ).getTensionInKg();
 });
@@ -30,21 +27,19 @@ const selectedNoteTension = computed(() => {
 
 <template>
   <div class="string-tension">
-    <select v-model="selectedNote">
+    <select v-model="selected.note">
       <option v-for="note in notes" :value="note" :key="note">
         {{ note }}
       </option>
     </select>
 
-    <select v-model="selectedString">
+    <select v-model="selected.string">
       <option v-for="string in strings" :value="string" :key="string.name">
         {{ string.name }} - {{ string.size }} - {{ string.unitWeight }} kg
       </option>
     </select>
 
-    <div>Note: {{ selectedNote }}</div>
-    <div>Tension: {{ selectedNoteTension.toPrecision(2) }} kg</div>
-    <div>String: {{ selectedString }}</div>
+    <span> Tension: {{ selectedNoteTension.toPrecision(2) }} kg</span>
   </div>
 </template>
 
