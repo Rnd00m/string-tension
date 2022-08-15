@@ -4,15 +4,24 @@ import { strings } from "@/scripts/strings";
 import { computed, reactive, ref } from "vue";
 import { Note, Scale } from "@tonaljs/tonal";
 
+const props = defineProps(["stringSettings"]);
+
+console.log(props.stringSettings);
+
+const selectedNote = props.stringSettings
+  ? props.stringSettings.note
+  : reactive(ref("E2"));
+const selectedString = props.stringSettings
+  ? props.stringSettings.string
+  : null;
 const range = Scale.rangeOf("C chromatic");
 const notes = range("C1", "C5"); // All notes between C1 and C5
 
-const selectedString = reactive(ref("A"));
-const selectedNote = reactive(ref("E2"));
+console.log(selectedString);
 
 const selectedNoteTension = computed(() => {
   return new StringTension(
-    selectedString.value,
+    selectedString,
     Note.freq(selectedNote.value),
     0.648
   ).getTensionInKg();

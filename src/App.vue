@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import StringTension from "./components/StringTensionComponent.vue";
+import GuitarTension from "@/components/GuitarTensionComponent.vue";
 </script>
 
 <template>
   <div class="wrapper">
-    <StringTension />
+    <GuitarTension />
   </div>
 </template>
 
