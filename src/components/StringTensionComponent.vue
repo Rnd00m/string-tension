@@ -14,14 +14,16 @@ const selected = reactive({
 const range = Scale.rangeOf("C chromatic");
 const notes = range("C1", "C5"); // All notes between C1 and C5
 
-console.log(selected.string);
-
 const selectedNoteTension = computed(() => {
-  return new StringTension(
-    selected.string,
-    Note.freq(selected.note),
-    0.648
+  let tension = new StringTension(
+      selected.string,
+      Note.freq(selected.note),
+      0.648
   ).getTensionInKg();
+
+  tension = Math.round(tension * 100) / 100;
+
+  return tension;
 });
 </script>
 
@@ -39,7 +41,7 @@ const selectedNoteTension = computed(() => {
       </option>
     </select>
 
-    <span> Tension: {{ selectedNoteTension.toPrecision(2) }} kg</span>
+    <span> Tension: {{ selectedNoteTension }} kg</span>
   </div>
 </template>
 
