@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { StringTension } from "@/scripts/classes/StringTension";
 import { strings } from "@/scripts/strings";
-import { computed, reactive, ref } from "vue";
+import { computed, reactive, ref, watch } from "vue";
 import { Note, Scale } from "@tonaljs/tonal";
+import { useTensionStore } from "@/stores/tension";
 
-const props = defineProps(["stringSettings"]);
+const tensionStore = useTensionStore();
+const props = defineProps(["stringSettings", "index"]);
 
 const selected = reactive({
   note: props.stringSettings ? props.stringSettings.note : ref("E2"),
@@ -14,17 +16,37 @@ const selected = reactive({
 const range = Scale.rangeOf("C chromatic");
 const notes = range("C1", "C5"); // All notes between C1 and C5
 
-const selectedNoteTension = computed(() => {
-  let tension = new StringTension(
+const tension = ref(0);
+
+watch(
+  () => selected.note,
+  (note) => {
+    let tension = new StringTension(
       selected.string,
+      Note.freq(note),
+      0.648
+    ).getTensionInKg();
+
+    tension = Math.round(tension * 100) / 100;
+
+    tensionStore.setTension(props.index, tension);
+  }
+);
+
+watch(
+  () => selected.string,
+  (string) => {
+    let tension = new StringTension(
+      string,
       Note.freq(selected.note),
       0.648
-  ).getTensionInKg();
+    ).getTensionInKg();
 
-  tension = Math.round(tension * 100) / 100;
+    tension = Math.round(tension * 100) / 100;
 
-  return tension;
-});
+    tensionStore.setTension(props.index, tension);
+  }
+);
 </script>
 
 <template>
@@ -41,7 +63,7 @@ const selectedNoteTension = computed(() => {
       </option>
     </select>
 
-    <span> Tension: {{ selectedNoteTension }} kg</span>
+    <span> Tension: {{ props.stringSettings.tension }} kg</span>
   </div>
 </template>
 
