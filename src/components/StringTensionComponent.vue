@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { StringTension } from "@/scripts/classes/StringTension";
 import { strings } from "@/scripts/strings";
-import { computed, reactive, ref, watch } from "vue";
+import { reactive, ref, watch } from "vue";
 import { Note, Scale } from "@tonaljs/tonal";
 import { useTensionStore } from "@/stores/tension";
 
@@ -15,8 +15,6 @@ const selected = reactive({
 
 const range = Scale.rangeOf("C chromatic");
 const notes = range("C1", "C5"); // All notes between C1 and C5
-
-const tension = ref(0);
 
 watch(
   () => selected.note,
