@@ -12,7 +12,7 @@ import {
   DatasetComponent,
 } from "echarts/components";
 import VChart, { THEME_KEY } from "vue-echarts";
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent, computed } from "vue";
 
 use([
   CanvasRenderer,
@@ -36,16 +36,17 @@ export default defineComponent({
     [THEME_KEY]: "light",
   },
   setup() {
+    const tensionStore = useTensionStore();
+
+    const source = computed(() =>
+      tensionStore.strings
+        .map((string) => [string.tension, string.note])
+        .reverse()
+    );
+
     const option = ref({
       dataset: {
-        source: [
-          [89.3, "Matcha Latte"],
-          [57.1, "Milk Tea"],
-          [74.4, "Cheese Cocoa"],
-          [50.1, "Cheese Brownie"],
-          [89.7, "Matcha Cocoa"],
-          [68.1, "Tea"],
-        ],
+        source: source,
       },
       grid: { containLabel: true },
       xAxis: { name: "Tension" },
@@ -53,8 +54,8 @@ export default defineComponent({
       visualMap: {
         orient: "horizontal",
         left: "center",
-        min: 10,
-        max: 100,
+        min: 7,
+        max: 15,
         text: ["High Tension", "Low Tension"],
         // Map the score column to color
         dimension: 0,
