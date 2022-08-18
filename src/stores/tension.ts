@@ -16,12 +16,17 @@ export const useTensionStore = defineStore({
     strings: [] as GuitarStringTension[],
   }),
   getters: {
-    getTotalTension(state) {
+    getTotalTension(state): number {
       let totalTension = 0;
       state.strings.forEach(
         (string: GuitarStringTension) => (totalTension += string.tension)
       );
       return Math.round(totalTension * 100) / 100;
+    },
+    getAverageTension(state): number {
+      return (
+        Math.round((this.getTotalTension / state.strings.length) * 100) / 100
+      );
     },
   },
   actions: {

@@ -42,7 +42,7 @@ watch(
   <div class="string-tension flex items-center gap-3">
     <select
       v-model="selected.note"
-      class="select select-primary max-w-xs flex-none"
+      class="select select-accent max-w-xs flex-none"
     >
       <option v-for="note in notes" :value="note" :key="note">
         {{ note }}
@@ -51,7 +51,7 @@ watch(
 
     <select
       v-model="selected.string"
-      class="select select-primary w-72 max-w-xs flex-auto"
+      class="select select-accent w-72 max-w-xs flex-auto"
     >
       <option v-for="string in strings" :value="string" :key="string.name">
         {{ string.name }} - {{ string.size }} - {{ string.unitWeight }} kg

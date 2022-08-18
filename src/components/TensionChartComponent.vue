@@ -79,13 +79,13 @@ export default defineComponent({
       renderer: "canvas",
     };
 
-    return { option, initOptions };
+    return { option, initOptions, tensionStore };
   },
 });
 </script>
 
 <template>
-  <div class="tension-chart-wrapper">
+  <div class="tension-chart-wrapper grid items-center">
     <div class="tension-chart-container">
       <v-chart
         :option="option"
@@ -93,6 +93,16 @@ export default defineComponent({
         :init-options="initOptions"
         autoresize
       />
+    </div>
+    <div class="stats stats-vertical lg:stats-horizontal shadow">
+      <div class="stat">
+        <div class="stat-title">Total tension</div>
+        <div class="stat-value">{{ tensionStore.getTotalTension }} kg</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Average tension</div>
+        <div class="stat-value">{{ tensionStore.getAverageTension }} kg</div>
+      </div>
     </div>
   </div>
 </template>
