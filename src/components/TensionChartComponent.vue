@@ -39,13 +39,12 @@ export default defineComponent({
     const option = ref({
       dataset: {
         source: [
-          ["score", "tension", "string"],
-          [89.3, 58212, "Matcha Latte"],
-          [57.1, 78254, "Milk Tea"],
-          [74.4, 41032, "Cheese Cocoa"],
-          [50.1, 12755, "Cheese Brownie"],
-          [89.7, 20145, "Matcha Cocoa"],
-          [68.1, 79146, "Tea"],
+          [89.3, "Matcha Latte"],
+          [57.1, "Milk Tea"],
+          [74.4, "Cheese Cocoa"],
+          [50.1, "Cheese Brownie"],
+          [89.7, "Matcha Cocoa"],
+          [68.1, "Tea"],
         ],
       },
       grid: { containLabel: true },
