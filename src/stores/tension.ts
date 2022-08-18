@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { GuitarString } from "@/scripts/classes/GuitarString";
-import { StringType } from "@/scripts/classes/StringType";
 import { StringTension } from "@/scripts/classes/StringTension";
 import { Note } from "@tonaljs/tonal";
 
@@ -13,14 +12,15 @@ type GuitarStringTension = {
 export const useTensionStore = defineStore({
   id: "tension",
   state: () => ({
-    totalNeckTension: 0,
-    diapason: 0.648,
-    strings: [],
+    diapason: 0.648 as number,
+    strings: [] as GuitarStringTension[],
   }),
   getters: {
     getTotalTension(state) {
       let totalTension = 0;
-      state.strings.forEach((string) => (totalTension += string.tension));
+      state.strings.forEach(
+        (string: GuitarStringTension) => (totalTension += string.tension)
+      );
       return Math.round(totalTension * 100) / 100;
     },
   },
@@ -36,7 +36,7 @@ export const useTensionStore = defineStore({
     getTension(stringTension: GuitarStringTension): number {
       const tension = new StringTension(
         stringTension.string,
-        Note.freq(stringTension.note),
+        Note.freq(stringTension.note) || 0,
         this.diapason
       ).getTensionInKg();
 
