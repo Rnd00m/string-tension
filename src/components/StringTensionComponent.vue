@@ -39,20 +39,30 @@ watch(
 </script>
 
 <template>
-  <div class="string-tension">
-    <select v-model="selected.note">
+  <div class="string-tension inline-flex gap-3">
+    <select
+      v-model="selected.note"
+      class="select select-primary max-w-xs flex-none"
+    >
       <option v-for="note in notes" :value="note" :key="note">
         {{ note }}
       </option>
     </select>
 
-    <select v-model="selected.string">
+    <select
+      v-model="selected.string"
+      class="select select-primary w-72 max-w-xs flex-auto"
+    >
       <option v-for="string in strings" :value="string" :key="string.name">
         {{ string.name }} - {{ string.size }} - {{ string.unitWeight }} kg
       </option>
     </select>
 
-    <span> Tension: {{ props.stringSettings.tension }} kg</span>
+    <div class="grid content-center">
+      <span class="string-tension-span">
+        {{ props.stringSettings.tension }} kg
+      </span>
+    </div>
   </div>
 </template>
 

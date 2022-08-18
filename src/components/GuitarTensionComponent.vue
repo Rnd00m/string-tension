@@ -75,14 +75,13 @@ defaultStrings.forEach((string) => {
 </script>
 
 <template>
-  <div class="guitar-tension">
+  <div class="guitar-tension grid gap-4">
     <StringTension
       :string-settings="string"
       :index="index"
       v-for="(string, index) in tensionStore.strings"
       :key="'string-tension-' + string.note"
     ></StringTension>
-    <div>{{ tensionStore.getTotalTension }} kg</div>
   </div>
 </template>
 
