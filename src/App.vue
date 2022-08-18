@@ -4,7 +4,7 @@ import TensionChart from "@/components/TensionChartComponent.vue";
 </script>
 
 <template>
-  <div class="wrapper grid grid-flow-col">
+  <div class="wrapper grid grid-flow-col items-center">
     <GuitarTension />
     <TensionChart></TensionChart>
   </div>

@@ -39,7 +39,7 @@ watch(
 </script>
 
 <template>
-  <div class="string-tension inline-flex gap-3">
+  <div class="string-tension flex items-center gap-3">
     <select
       v-model="selected.note"
       class="select select-primary max-w-xs flex-none"
@@ -58,7 +58,7 @@ watch(
       </option>
     </select>
 
-    <div class="grid content-center">
+    <div>
       <span class="string-tension-span">
         {{ props.stringSettings.tension }} kg
       </span>

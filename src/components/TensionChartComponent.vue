@@ -28,12 +28,12 @@ use([
 ]);
 
 export default defineComponent({
-  name: "HelloWorld",
+  name: "TensionChart",
   components: {
     VChart,
   },
   provide: {
-    [THEME_KEY]: "dark",
+    [THEME_KEY]: "light",
   },
   setup() {
     const option = ref({
@@ -75,21 +75,31 @@ export default defineComponent({
         },
       ],
     });
+    const initOptions = {
+      renderer: "canvas",
+    };
 
-    return { option };
+    return { option, initOptions };
   },
 });
 </script>
 
 <template>
-  <div class="tension-chart-wrapper w-96">
-    <v-chart :option="option" class="tension-chart" autoresize />
-    <!--    <div class="text-center">{{ tensionStore.getTotalTension }} kg</div>-->
+  <div class="tension-chart-wrapper">
+    <div class="tension-chart-container">
+      <v-chart
+        :option="option"
+        class="tension-chart"
+        :init-options="initOptions"
+        autoresize
+      />
+    </div>
   </div>
 </template>
 
 <style scoped>
-.tension-chart {
-  width: 100%;
+.tension-chart-container {
+  height: 500px;
+  width: 600px;
 }
 </style>
