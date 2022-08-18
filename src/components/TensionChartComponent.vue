@@ -2,7 +2,7 @@
 import { useTensionStore } from "@/stores/tension";
 import { use } from "echarts/core";
 import { CanvasRenderer } from "echarts/renderers";
-import { BarChart, EffectScatterChart, LinesChart } from "echarts/charts";
+import { BarChart, LinesChart } from "echarts/charts";
 import {
   TitleComponent,
   TooltipComponent,
@@ -22,7 +22,6 @@ use([
   GridComponent,
   VisualMapComponent,
   BarChart,
-  EffectScatterChart,
   LinesChart,
   DatasetComponent,
 ]);
