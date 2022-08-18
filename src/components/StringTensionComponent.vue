@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { StringTension } from "@/scripts/classes/StringTension";
 import { strings } from "@/scripts/strings";
 import { reactive, ref, watch } from "vue";
-import { Note, Scale } from "@tonaljs/tonal";
+import { Scale } from "@tonaljs/tonal";
 import { useTensionStore } from "@/stores/tension";
 
 const tensionStore = useTensionStore();
@@ -10,7 +9,7 @@ const props = defineProps(["stringSettings", "index"]);
 
 const selected = reactive({
   note: props.stringSettings ? props.stringSettings.note : ref("E2"),
-  string: props.stringSettings ? props.stringSettings.string : null,
+  string: props.stringSettings ? props.stringSettings.string : ref(null),
 });
 
 const range = Scale.rangeOf("C chromatic");
@@ -19,30 +18,22 @@ const notes = range("C1", "C5"); // All notes between C1 and C5
 watch(
   () => selected.note,
   (note) => {
-    let tension = new StringTension(
-      selected.string,
-      Note.freq(note),
-      0.648
-    ).getTensionInKg();
-
-    tension = Math.round(tension * 100) / 100;
-
-    tensionStore.setTension(props.index, tension);
+    tensionStore.updateString(props.index, {
+      note: note,
+      string: selected.string,
+      tension: 0,
+    });
   }
 );
 
 watch(
   () => selected.string,
   (string) => {
-    let tension = new StringTension(
-      string,
-      Note.freq(selected.note),
-      0.648
-    ).getTensionInKg();
-
-    tension = Math.round(tension * 100) / 100;
-
-    tensionStore.setTension(props.index, tension);
+    tensionStore.updateString(props.index, {
+      note: selected.note,
+      string: string,
+      tension: 0,
+    });
   }
 );
 </script>
