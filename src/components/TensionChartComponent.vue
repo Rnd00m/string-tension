@@ -53,8 +53,8 @@ export default defineComponent({
       visualMap: {
         orient: "horizontal",
         left: "center",
-        min: 7,
-        max: 16,
+        min: 5.5,
+        max: 14,
         text: ["High Tension", "Low Tension"],
         // Map the score column to color
         dimension: 0,
