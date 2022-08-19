@@ -6,7 +6,7 @@ import { StringType } from "@/scripts/classes/StringType";
 
 const tensionStore = useTensionStore();
 
-const defaultStrings = [
+const defaultStrings: GuitarStringTension[] = [
   {
     note: "E4",
     string: new GuitarString(

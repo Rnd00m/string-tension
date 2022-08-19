@@ -1,13 +1,6 @@
 import { defineStore } from "pinia";
-import { GuitarString } from "@/scripts/classes/GuitarString";
 import { StringTension } from "@/scripts/classes/StringTension";
 import { Note } from "@tonaljs/tonal";
-
-type GuitarStringTension = {
-  note: string;
-  string: GuitarString;
-  tension: number;
-};
 
 export const useTensionStore = defineStore({
   id: "tension",
