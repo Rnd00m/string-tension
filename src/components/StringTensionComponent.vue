@@ -59,7 +59,7 @@ watch(
     </select>
 
     <div>
-      <span class="string-tension-span">
+      <span class="string-tension-span font-semibold">
         {{ props.stringSettings.tension }} kg
       </span>
     </div>
