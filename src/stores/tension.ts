@@ -44,6 +44,13 @@ export const useTensionStore = defineStore({
       this.calcultateTension(stringTension);
       this.strings.splice(index, 1, stringTension);
     },
+    updateDiapason(newDiapason: number): void {
+      this.diapason = newDiapason;
+
+      this.strings.forEach((string, index) => {
+        this.updateString(index, string);
+      });
+    },
     getTension(stringTension: GuitarStringTension): number {
       const tension = new StringTension(
         stringTension.string,
