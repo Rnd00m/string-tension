@@ -54,7 +54,7 @@ export default defineComponent({
         orient: "horizontal",
         left: "center",
         min: 7,
-        max: 15,
+        max: 16,
         text: ["High Tension", "Low Tension"],
         // Map the score column to color
         dimension: 0,
@@ -92,16 +92,6 @@ export default defineComponent({
         :init-options="initOptions"
         autoresize
       />
-    </div>
-    <div class="stats stats-vertical lg:stats-horizontal shadow">
-      <div class="stat">
-        <div class="stat-title">Total tension</div>
-        <div class="stat-value">{{ tensionStore.getTotalTension }} kg</div>
-      </div>
-      <div class="stat">
-        <div class="stat-title">Average tension</div>
-        <div class="stat-value">{{ tensionStore.getAverageTension }} kg</div>
-      </div>
     </div>
   </div>
 </template>

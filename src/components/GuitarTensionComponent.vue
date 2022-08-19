@@ -75,7 +75,7 @@ defaultStrings.forEach((string) => {
 </script>
 
 <template>
-  <div class="guitar-tension grid gap-4">
+  <div class="guitar-tension grid gap-3 content-center">
     <StringTension
       :string-settings="string"
       :index="index"

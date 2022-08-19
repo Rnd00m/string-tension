@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import GuitarTension from "@/components/GuitarTensionComponent.vue";
 import TensionChart from "@/components/TensionChartComponent.vue";
+import TensionStat from "@/components/TensionStatComponent.vue";
 </script>
 
 <template>
-  <div class="wrapper grid grid-flow-col items-center">
-    <GuitarTension />
-    <TensionChart></TensionChart>
+  <div class="wrapper grid grid-flow-row items-center gap-4">
+    <div class="grid grid-flow-row grid-cols-2">
+      <GuitarTension />
+      <TensionChart />
+    </div>
+    <div class="grid justify-items-center">
+      <TensionStat />
+    </div>
   </div>
 </template>
 
