@@ -28,6 +28,12 @@ export const useTensionStore = defineStore({
         Math.round((this.getTotalTension / state.strings.length) * 100) / 100
       );
     },
+    getMinimumTension(state): number {
+      return Math.min(...state.strings.map((string) => string.tension));
+    },
+    getMaximumTension(state): number {
+      return Math.max(...state.strings.map((string) => string.tension));
+    },
   },
   actions: {
     addString(stringTension: GuitarStringTension): void {
