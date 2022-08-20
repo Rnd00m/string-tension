@@ -39,7 +39,10 @@ watch(
 </script>
 
 <template>
-  <div class="string-tension flex items-center gap-3">
+  <!--  <div class="string-tension flex items-center gap-3">-->
+  <div
+    class="string-tension grid grid-flow-col place-content-center place-items-center gap-3"
+  >
     <select
       v-model="selected.note"
       class="select select-accent max-w-xs flex-none"
