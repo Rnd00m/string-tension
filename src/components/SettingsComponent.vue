@@ -39,6 +39,10 @@ const tunings: Tuning[] = [
     name: "2 step down",
     notes: ["C4", "G3", "Eb3", "Bb2", "F2", "C2"],
   },
+  {
+    name: "Standard 7 strings",
+    notes: ["E4", "B3", "G3", "D3", "A2", "E2", "B2"],
+  },
 ];
 
 watch(
@@ -51,11 +55,25 @@ watch(
 watch(
   () => selected.tuning,
   (tuning) => {
+    let lastIndex = 0;
+
     tensionStore.strings.forEach((string, index) => {
-      console.log(tuning);
       string.note = tuning[index];
       tensionStore.updateString(index, string);
+      lastIndex = index;
     });
+
+    if (tuning.length > tensionStore.strings.length) {
+      lastIndex += 1;
+
+      for (let i = lastIndex; i < tuning.length; i++) {
+        tensionStore.addString({
+          note: tuning[i],
+          string: null,
+          tension: 0,
+        });
+      }
+    }
   }
 );
 </script>
