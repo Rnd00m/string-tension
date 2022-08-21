@@ -72,16 +72,29 @@ const defaultStrings: GuitarStringTension[] = [
 defaultStrings.forEach((string) => {
   tensionStore.addString(string);
 });
+
+function addNewString() {
+  tensionStore.addString({
+    note: null,
+    string: null,
+    tension: 0,
+  });
+}
 </script>
 
 <template>
-  <div class="guitar-tension grid gap-3 content-center">
+  <div class="guitar-tension grid gap-3 content-center place-items-center">
     <StringTension
       :string-settings="string"
       :index="index"
       v-for="(string, index) in tensionStore.strings"
       :key="'string-tension-' + string.note"
     ></StringTension>
+    <div class="self-auto">
+      <button class="btn btn-outline btn-block" @click="addNewString">
+        Add string
+      </button>
+    </div>
   </div>
 </template>
 

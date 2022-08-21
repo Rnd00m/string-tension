@@ -4,8 +4,8 @@ export {};
 
 declare global {
   type GuitarStringTension = {
-    note: string;
-    string: GuitarString;
-    tension: number;
+    note: string | null;
+    string: GuitarString | null;
+    tension: number | 0;
   };
 }
