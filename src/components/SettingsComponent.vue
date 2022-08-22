@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTensionStore } from "@/stores/tension";
 import { reactive, watch } from "vue";
-import { tunings, stringSets } from "@/scripts/stringData";
+import { tunings, stringSets } from "@/scripts/stringsData";
 
 const tensionStore = useTensionStore();
 

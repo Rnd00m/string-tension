@@ -88,7 +88,7 @@ function addNewString() {
       :string-settings="string"
       :index="index"
       v-for="(string, index) in tensionStore.strings"
-      :key="'string-tension-' + string.note"
+      :key="`string-tension-${string.note}-${string.string.name}`.toLowerCase()"
     ></StringTension>
     <div class="self-auto">
       <button class="btn btn-outline btn-block" @click="addNewString">

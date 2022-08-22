@@ -11,7 +11,7 @@ interface StringSet {
   strings: GuitarString[];
 }
 
-export const stringData: GuitarString[] = [
+export const strings: GuitarString[] = [
   new GuitarString("PL007", 7, 0.0001937593, StringType.PlainSteelLockTwist),
   new GuitarString("PL008", 8, 0.00025322644, StringType.PlainSteelLockTwist),
   new GuitarString(
@@ -369,6 +369,47 @@ export const stringSets: StringSet[] = [
         "NW042",
         42,
         0.00576438382,
+        StringType.NickelPlatedSteelRoundWound
+      ),
+    ],
+  },
+  {
+    name: "EXL125 9-46",
+    strings: [
+      new GuitarString(
+        "PL009",
+        9,
+        0.00032037252,
+        StringType.PlainSteelLockTwist
+      ),
+      new GuitarString(
+        "PL011",
+        11,
+        0.0004785944,
+        StringType.PlainSteelLockTwist
+      ),
+      new GuitarString(
+        "PL016",
+        16,
+        0.00101272718,
+        StringType.PlainSteelLockTwist
+      ),
+      new GuitarString(
+        "NW026",
+        26,
+        0.00226278718,
+        StringType.NickelPlatedSteelRoundWound
+      ),
+      new GuitarString(
+        "NW036",
+        36,
+        0.00427949112,
+        StringType.NickelPlatedSteelRoundWound
+      ),
+      new GuitarString(
+        "NW046",
+        46,
+        0.00682461328,
         StringType.NickelPlatedSteelRoundWound
       ),
     ],

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { stringData } from "@/scripts/stringData";
+import { strings } from "@/scripts/stringsData";
 import { reactive, ref, watch } from "vue";
 import { Scale } from "@tonaljs/tonal";
 import { useTensionStore } from "@/stores/tension";
@@ -55,7 +55,7 @@ watch(
       v-model="selected.string"
       class="select select-accent w-72 max-w-xs flex-auto"
     >
-      <option v-for="string in stringData" :value="string" :key="string.name">
+      <option v-for="string in strings" :value="string" :key="string.name">
         {{ string.name }} - {{ string.size }} - {{ string.unitWeight }} kg
       </option>
     </select>
