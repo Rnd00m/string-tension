@@ -1,49 +1,16 @@
 <script setup lang="ts">
 import { useTensionStore } from "@/stores/tension";
 import { reactive, watch } from "vue";
-
-interface Tuning {
-  name: string;
-  notes: string[];
-}
+import { tunings, stringSets } from "@/scripts/stringData";
 
 const tensionStore = useTensionStore();
 
 const selected = reactive({
   diapason: tensionStore.diapason,
-  tuning: ["E4", "B3", "G3", "D3", "A2", "E2"],
+  tuning: tunings.find((tuning) => tuning.name === "Standard")?.notes,
+  stringSet: stringSets.find((stringSet) => stringSet.name === "EXL110 10-46")
+    ?.strings,
 });
-
-const tunings: Tuning[] = [
-  {
-    name: "Standard",
-    notes: ["E4", "B3", "G3", "D3", "A2", "E2"],
-  },
-  {
-    name: "Drop D",
-    notes: ["E4", "B3", "G3", "D3", "A2", "D2"],
-  },
-  {
-    name: "1/2 step down",
-    notes: ["Eb4", "Bb3", "F3", "C3", "G2", "Eb2"],
-  },
-  {
-    name: "1 step down",
-    notes: ["D4", "A3", "F3", "C3", "G2", "D2"],
-  },
-  {
-    name: "Drop C",
-    notes: ["D4", "A3", "F3", "C3", "G2", "C2"],
-  },
-  {
-    name: "2 step down",
-    notes: ["C4", "G3", "Eb3", "Bb2", "F2", "C2"],
-  },
-  {
-    name: "Standard 7 strings",
-    notes: ["E4", "B3", "G3", "D3", "A2", "E2", "B2"],
-  },
-];
 
 watch(
   () => selected.diapason,
@@ -55,23 +22,52 @@ watch(
 watch(
   () => selected.tuning,
   (tuning) => {
-    let lastIndex = 0;
+    if (tuning) {
+      let lastIndex = 0;
 
-    tensionStore.strings.forEach((string, index) => {
-      string.note = tuning[index];
-      tensionStore.updateString(index, string);
-      lastIndex = index;
-    });
+      tensionStore.strings.forEach((string, index) => {
+        string.note = tuning[index];
+        tensionStore.updateString(index, string);
+        lastIndex = index;
+      });
 
-    if (tuning.length > tensionStore.strings.length) {
-      lastIndex += 1;
+      if (tuning.length > tensionStore.strings.length) {
+        lastIndex += 1;
 
-      for (let i = lastIndex; i < tuning.length; i++) {
-        tensionStore.addString({
-          note: tuning[i],
-          string: null,
-          tension: 0,
-        });
+        for (let i = lastIndex; i < tuning.length; i++) {
+          tensionStore.addString({
+            note: tuning[i],
+            string: null,
+            tension: 0,
+          });
+        }
+      }
+    }
+  }
+);
+
+watch(
+  () => selected.stringSet,
+  (stringSet) => {
+    if (stringSet) {
+      let lastIndex = 0;
+
+      tensionStore.strings.forEach((string, index) => {
+        string.string = stringSet[index];
+        tensionStore.updateString(index, string);
+        lastIndex = index;
+      });
+
+      if (stringSet.length > tensionStore.strings.length) {
+        lastIndex += 1;
+
+        for (let i = lastIndex; i < stringSet.length; i++) {
+          tensionStore.addString({
+            note: null,
+            string: stringSet[i],
+            tension: 0,
+          });
+        }
       }
     }
   }
@@ -104,6 +100,20 @@ watch(
           :value="tuning.notes"
         >
           {{ tuning.name }}
+        </option>
+      </select>
+    </div>
+    <div class="form-control w-full max-w-xs">
+      <label class="label">
+        <span class="label-text">String set</span>
+      </label>
+      <select class="select select-bordered" v-model="selected.stringSet">
+        <option
+          :key="stringSet.name"
+          v-for="stringSet in stringSets"
+          :value="stringSet.strings"
+        >
+          {{ stringSet.name }}
         </option>
       </select>
     </div>

@@ -1,7 +1,17 @@
 import { GuitarString } from "@/scripts/classes/GuitarString";
 import { StringType } from "@/scripts/classes/StringType";
 
-export const strings: GuitarString[] = [
+interface Tuning {
+  name: string;
+  notes: string[];
+}
+
+interface StringSet {
+  name: string;
+  strings: GuitarString[];
+}
+
+export const stringData: GuitarString[] = [
   new GuitarString("PL007", 7, 0.0001937593, StringType.PlainSteelLockTwist),
   new GuitarString("PL008", 8, 0.00025322644, StringType.PlainSteelLockTwist),
   new GuitarString(
@@ -247,4 +257,120 @@ export const strings: GuitarString[] = [
     0.02053866438,
     StringType.NickelPlatedSteelRoundWound
   ),
+];
+
+export const tunings: Tuning[] = [
+  {
+    name: "Standard",
+    notes: ["E4", "B3", "G3", "D3", "A2", "E2"],
+  },
+  {
+    name: "Drop D",
+    notes: ["E4", "B3", "G3", "D3", "A2", "D2"],
+  },
+  {
+    name: "1/2 step down",
+    notes: ["Eb4", "Bb3", "F3", "C3", "G2", "Eb2"],
+  },
+  {
+    name: "1 step down",
+    notes: ["D4", "A3", "F3", "C3", "G2", "D2"],
+  },
+  {
+    name: "Drop C",
+    notes: ["D4", "A3", "F3", "C3", "G2", "C2"],
+  },
+  {
+    name: "2 step down",
+    notes: ["C4", "G3", "Eb3", "Bb2", "F2", "C2"],
+  },
+  {
+    name: "Standard 7 strings",
+    notes: ["E4", "B3", "G3", "D3", "A2", "E2", "B2"],
+  },
+];
+
+export const stringSets: StringSet[] = [
+  {
+    name: "EXL110 10-46",
+    strings: [
+      new GuitarString(
+        "PL010",
+        10,
+        0.0003955547,
+        StringType.PlainSteelLockTwist
+      ),
+      new GuitarString(
+        "PL013",
+        13,
+        0.00066860352,
+        StringType.PlainSteelLockTwist
+      ),
+      new GuitarString(
+        "PL017",
+        17,
+        0.00114326916,
+        StringType.PlainSteelLockTwist
+      ),
+      new GuitarString(
+        "NW026",
+        26,
+        0.00226278718,
+        StringType.NickelPlatedSteelRoundWound
+      ),
+      new GuitarString(
+        "NW036",
+        36,
+        0.00427949112,
+        StringType.NickelPlatedSteelRoundWound
+      ),
+      new GuitarString(
+        "NW046",
+        46,
+        0.00682461328,
+        StringType.NickelPlatedSteelRoundWound
+      ),
+    ],
+  },
+  {
+    name: "EXL120 9-42",
+    strings: [
+      new GuitarString(
+        "PL009",
+        9,
+        0.00032037252,
+        StringType.PlainSteelLockTwist
+      ),
+      new GuitarString(
+        "PL011",
+        11,
+        0.0004785944,
+        StringType.PlainSteelLockTwist
+      ),
+      new GuitarString(
+        "PL016",
+        16,
+        0.00101272718,
+        StringType.PlainSteelLockTwist
+      ),
+      new GuitarString(
+        "NW024",
+        24,
+        0.00193884306,
+        StringType.NickelPlatedSteelRoundWound
+      ),
+      new GuitarString(
+        "NW032",
+        32,
+        0.00345498726,
+        StringType.NickelPlatedSteelRoundWound
+      ),
+      new GuitarString(
+        "NW042",
+        42,
+        0.00576438382,
+        StringType.NickelPlatedSteelRoundWound
+      ),
+    ],
+  },
 ];
