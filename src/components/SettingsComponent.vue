@@ -33,7 +33,6 @@ watch(
 
       if (tuning.length > tensionStore.strings.length) {
         lastIndex += 1;
-
         for (let i = lastIndex; i < tuning.length; i++) {
           tensionStore.addString({
             note: tuning[i],
@@ -41,6 +40,9 @@ watch(
             tension: 0,
           });
         }
+      }
+      if (tensionStore.strings.length > tuning.length) {
+        tensionStore.deleteString(lastIndex);
       }
     }
   }
@@ -60,7 +62,6 @@ watch(
 
       if (stringSet.length > tensionStore.strings.length) {
         lastIndex += 1;
-
         for (let i = lastIndex; i < stringSet.length; i++) {
           tensionStore.addString({
             note: null,
@@ -68,6 +69,9 @@ watch(
             tension: 0,
           });
         }
+      }
+      if (tensionStore.strings.length > stringSet.length) {
+        tensionStore.deleteString(lastIndex);
       }
     }
   }
