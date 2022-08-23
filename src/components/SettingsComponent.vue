@@ -8,7 +8,7 @@ const tensionStore = useTensionStore();
 const selected = reactive({
   diapason: tensionStore.diapason,
   tuning: tunings.find((tuning) => tuning.name === "Standard")?.notes,
-  stringSet: stringSets.find((stringSet) => stringSet.name === "EXL110 10-46")
+  stringSet: stringSets.find((stringSet) => stringSet.name === "EXL110 (10-46)")
     ?.strings,
 });
 

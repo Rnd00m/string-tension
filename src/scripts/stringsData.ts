@@ -292,126 +292,130 @@ export const tunings: Tuning[] = [
 
 export const stringSets: StringSet[] = [
   {
-    name: "EXL110 10-46",
-    strings: [
-      new GuitarString(
-        "PL010",
-        10,
-        0.0003955547,
-        StringType.PlainSteelLockTwist
-      ),
-      new GuitarString(
-        "PL013",
-        13,
-        0.00066860352,
-        StringType.PlainSteelLockTwist
-      ),
-      new GuitarString(
-        "PL017",
-        17,
-        0.00114326916,
-        StringType.PlainSteelLockTwist
-      ),
-      new GuitarString(
-        "NW026",
-        26,
-        0.00226278718,
-        StringType.NickelPlatedSteelRoundWound
-      ),
-      new GuitarString(
-        "NW036",
-        36,
-        0.00427949112,
-        StringType.NickelPlatedSteelRoundWound
-      ),
-      new GuitarString(
-        "NW046",
-        46,
-        0.00682461328,
-        StringType.NickelPlatedSteelRoundWound
-      ),
-    ],
+    name: "EXL110 (10-46)",
+    strings: getGuitarStringFromList([
+      "PL010",
+      "PL013",
+      "PL017",
+      "NW026",
+      "NW036",
+      "NW046",
+    ]),
   },
   {
-    name: "EXL120 9-42",
-    strings: [
-      new GuitarString(
-        "PL009",
-        9,
-        0.00032037252,
-        StringType.PlainSteelLockTwist
-      ),
-      new GuitarString(
-        "PL011",
-        11,
-        0.0004785944,
-        StringType.PlainSteelLockTwist
-      ),
-      new GuitarString(
-        "PL016",
-        16,
-        0.00101272718,
-        StringType.PlainSteelLockTwist
-      ),
-      new GuitarString(
-        "NW024",
-        24,
-        0.00193884306,
-        StringType.NickelPlatedSteelRoundWound
-      ),
-      new GuitarString(
-        "NW032",
-        32,
-        0.00345498726,
-        StringType.NickelPlatedSteelRoundWound
-      ),
-      new GuitarString(
-        "NW042",
-        42,
-        0.00576438382,
-        StringType.NickelPlatedSteelRoundWound
-      ),
-    ],
+    name: "EXL120 (9-42)",
+    strings: getGuitarStringFromList([
+      "PL009",
+      "PL011",
+      "PL016",
+      "NW024",
+      "NW032",
+      "NW042",
+    ]),
   },
   {
-    name: "EXL125 9-46",
-    strings: [
-      new GuitarString(
-        "PL009",
-        9,
-        0.00032037252,
-        StringType.PlainSteelLockTwist
-      ),
-      new GuitarString(
-        "PL011",
-        11,
-        0.0004785944,
-        StringType.PlainSteelLockTwist
-      ),
-      new GuitarString(
-        "PL016",
-        16,
-        0.00101272718,
-        StringType.PlainSteelLockTwist
-      ),
-      new GuitarString(
-        "NW026",
-        26,
-        0.00226278718,
-        StringType.NickelPlatedSteelRoundWound
-      ),
-      new GuitarString(
-        "NW036",
-        36,
-        0.00427949112,
-        StringType.NickelPlatedSteelRoundWound
-      ),
-      new GuitarString(
-        "NW046",
-        46,
-        0.00682461328,
-        StringType.NickelPlatedSteelRoundWound
-      ),
-    ],
+    name: "EXL120+ (9.5-44)",
+    strings: getGuitarStringFromList([
+      "PL0095",
+      "PL0115",
+      "PL016",
+      "NW024",
+      "NW034",
+      "NW044",
+    ]),
+  },
+  {
+    name: "EXL125 (9-46)",
+    strings: getGuitarStringFromList([
+      "PL009",
+      "PL011",
+      "PL016",
+      "NW026",
+      "NW036",
+      "NW046",
+    ]),
+  },
+  {
+    name: "EXL130 (8-38)",
+    strings: getGuitarStringFromList([
+      "PL008",
+      "PL010",
+      "PL015",
+      "NW021",
+      "NW030",
+      "NW038",
+    ]),
+  },
+  {
+    name: "EXL115 (11-49)",
+    strings: getGuitarStringFromList([
+      "PL011",
+      "PL014",
+      "PL018",
+      "NW028",
+      "NW038",
+      "NW049",
+    ]),
+  },
+  {
+    name: "EXL115W (11-49)",
+    strings: getGuitarStringFromList([
+      "PL011",
+      "PL014",
+      "NW021",
+      "NW028",
+      "NW038",
+      "NW049",
+    ]),
+  },
+  {
+    name: "EXL116 (11-52)",
+    strings: getGuitarStringFromList([
+      "PL011",
+      "PL014",
+      "PL018",
+      "NW030",
+      "NW042",
+      "NW052",
+    ]),
+  },
+  {
+    name: "EXL117 (11-56)",
+    strings: getGuitarStringFromList([
+      "PL011",
+      "PL014",
+      "PL019",
+      "NW032",
+      "NW044",
+      "NW056",
+    ]),
+  },
+  {
+    name: "EXL110-7 (10-59)",
+    strings: getGuitarStringFromList([
+      "PL010",
+      "PL013",
+      "PL017",
+      "NW026",
+      "NW036",
+      "NW046",
+      "NW059",
+    ]),
+  },
+  {
+    name: "EXL120-7 (9-54)",
+    strings: getGuitarStringFromList([
+      "PL009",
+      "PL011",
+      "PL016",
+      "NW024",
+      "NW032",
+      "NW042",
+      "NW054",
+    ]),
   },
 ];
+
+export function getGuitarStringFromList(list: string[]): GuitarString[] {
+  return strings.filter((string) => list.includes(string.name));
+}
