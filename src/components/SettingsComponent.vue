@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTensionStore } from "@/stores/tension";
 import { reactive, watch } from "vue";
-import { tunings, stringSets } from "@/scripts/stringsData";
+import { tunings, stringSets, strings } from "@/scripts/stringsData";
 
 const tensionStore = useTensionStore();
 
@@ -31,6 +31,7 @@ watch(
         lastIndex = index;
       });
 
+      // Add missing strings to store
       if (tuning.length > tensionStore.strings.length) {
         lastIndex += 1;
         for (let i = lastIndex; i < tuning.length; i++) {
@@ -41,8 +42,12 @@ watch(
           });
         }
       }
+
+      // Remove extra strings from store
       if (tensionStore.strings.length > tuning.length) {
-        tensionStore.deleteString(lastIndex);
+        for (let i = lastIndex; i >= tuning.length; i--) {
+          tensionStore.deleteString(i);
+        }
       }
     }
   }
@@ -71,7 +76,9 @@ watch(
         }
       }
       if (tensionStore.strings.length > stringSet.length) {
-        tensionStore.deleteString(lastIndex);
+        for (let i = lastIndex; i >= stringSet.length; i--) {
+          tensionStore.deleteString(i);
+        }
       }
     }
   }

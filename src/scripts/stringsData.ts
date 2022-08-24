@@ -222,6 +222,12 @@ export const strings: GuitarString[] = [
     StringType.NickelPlatedSteelRoundWound
   ),
   new GuitarString(
+    "NW065",
+    65,
+    0.01382861017,
+    StringType.NickelPlatedSteelRoundWound
+  ),
+  new GuitarString(
     "NW066",
     66,
     0.01426657762,
@@ -286,7 +292,11 @@ export const tunings: Tuning[] = [
   },
   {
     name: "Standard 7 strings",
-    notes: ["E4", "B3", "G3", "D3", "A2", "E2", "B2"],
+    notes: ["E4", "B3", "G3", "D3", "A2", "E2", "B1"],
+  },
+  {
+    name: "Standard 8 strings",
+    notes: ["E4", "B3", "G3", "D3", "A2", "E2", "B1", "Gb1"],
   },
 ];
 
@@ -412,6 +422,32 @@ export const stringSets: StringSet[] = [
       "NW032",
       "NW042",
       "NW054",
+    ]),
+  },
+  {
+    name: "EXL120-8 (9-65)",
+    strings: getGuitarStringFromList([
+      "PL009",
+      "PL011",
+      "PL016",
+      "NW024",
+      "NW032",
+      "NW042",
+      "NW054",
+      "NW065",
+    ]),
+  },
+  {
+    name: "EXL140-8 (10-74)",
+    strings: getGuitarStringFromList([
+      "PL010",
+      "PL013",
+      "PL017",
+      "NW030",
+      "NW042",
+      "NW054",
+      "NW064",
+      "NW074",
     ]),
   },
 ];
